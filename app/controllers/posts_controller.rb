@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-	def new
+	before_filter :authenticate_user!
+  def new
 		@post=Post.new()
 	end
 	def index
@@ -38,7 +39,6 @@ def destroy
  
   redirect_to posts_path
 end
-	
 	private
   		def post_params
     		params.require(:post).permit(:title, :text)
