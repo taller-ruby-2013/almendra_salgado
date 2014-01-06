@@ -1,0 +1,10 @@
+# app/views/shared/_tweets.html.erb
+<section id="tweets">
+  <ul>
+  	<% unless @tweets.nil? %>
+    <% @tweets.each do |tweet| %>
+      <li><%= link_to tweet.text, "https://www.twitter.com/#{tweet.user.screen_name}" %></li>
+      <% end %>
+  <%end%>
+  </ul>
+</section>

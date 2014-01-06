@@ -8,7 +8,15 @@ class PostsController < ApplicationController
 	end
 	def create
 		@post = Post.new(params[:post].permit(:title, :text))
- 
+    require 'twitter'
+
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = 'dqpGRWBecA8axelqmjHOXA'
+      config.consumer_secret = 'lBn4cJ1db2kxA0oZgiRhQr8RdaQinfWpm9qW7WiU4'
+      config.oauth_token = '493229855-bfKejNN5ytlU8fgpzuh64bmQejEfnMfK5ZsiFYG0'
+      config.oauth_token_secret = '8JaAYZep2hCnNjsLtGvMrRnf0E5JQ2pHaowtoQRB0qvZj'
+    end  
+    client.update("jsakhadajk")
   		if @post.save
     		redirect_to @post
   		else
